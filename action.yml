@@ -16,4 +16,4 @@ runs:
   main: 'dist/main.js'
 branding:
   color: 'blue'
-  icon: 'package'
+  icon: 'send'
