@@ -1,4 +1,4 @@
-name: 'Notify Telegram'
+name: 'Workflow Status Telegram'
 description: 'A GitHub Action to send workflow status over a Telegram Bot'
 author: 'yakuhzi'
 inputs:

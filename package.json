@@ -1,6 +1,6 @@
 {
   "name": "notify-telegram",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A GitHub Action to send workflow status over a Telegram Bot",
   "main": "dist/main.js",
   "scripts": {
