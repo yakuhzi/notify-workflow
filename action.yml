@@ -1,0 +1,19 @@
+name: 'Notify Telegram'
+description: 'A GitHub Action to send workflow status over a Telegram Bot'
+author: 'yakuhzi'
+inputs:
+  chat_id:
+    description: 'Chat to send the status'
+    required: true
+  bot_token:
+    description: 'Telegram Bot token'
+    required: true
+  job_status:
+    description: 'Job status'
+    required: true
+runs:
+  using: 'node12'
+  main: 'dist/main.js'
+branding:
+  color: 'blue'
+  icon: 'package'

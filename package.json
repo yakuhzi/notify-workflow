@@ -1,0 +1,32 @@
+{
+  "name": "notify-telegram",
+  "version": "1.0.0",
+  "description": "A GitHub Action to send workflow status over a Telegram Bot",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node -r dotenv/config .",
+    "start:dev": "ts-node --project tsconfig.json --files -r tsconfig-paths/register -r dotenv/config src/main/main.ts"
+  },
+  "keywords": [],
+  "author": "Yakuhzi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yakuhzi/notify-telegram.git"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.8.0",
+    "ts-node": "^8.8.1",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.8.3"
+  }
+}
