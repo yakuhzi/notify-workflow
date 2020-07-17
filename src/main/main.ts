@@ -1,16 +1,19 @@
+import * as core from '@actions/core'
 import axios from 'axios'
-import core from '@actions/core'
 
 async function run(): Promise<void> {
   try {
     let status = 'Undefined ❎'
 
     switch (process.env.INPUT_JOB_STATUS) {
-      case 'success': status = 'Success ✅'
+      case 'success':
+        status = 'Success ✅'
         break
-      case 'failure': status = 'Failure 🚫'
+      case 'failure':
+        status = 'Failure 🚫'
         break
-      case 'cancelled': status = 'Cancelled ❌'
+      case 'cancelled':
+        status = 'Cancelled ❌'
         break
     }
 
@@ -26,7 +29,7 @@ async function run(): Promise<void> {
       params: {
         chat_id: process.env.INPUT_CHAT_ID,
         text: `*GitHub Actions Workflow*\nStatus: ${status}\nRepository: https://github.com/${repository}` +
-          `\n${tag ? `Tag: ${tag}` : ''}\nWorkflow: ${workflow} - ${runId} (${runNumber})\nChecks: ${checkURL}`,
+          `${tag ? `\nTag: ${tag}` : ''}\nWorkflow: ${workflow} - ${runId} (${runNumber})\nChecks: ${checkURL}`,
         parse_mode: 'Markdown',
         disable_web_page_preview: true,
       },
