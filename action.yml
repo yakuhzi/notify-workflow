@@ -1,4 +1,4 @@
-name: 'Workflow Status'
+name: 'Notify Workflow'
 description: 'A GitHub Action to send workflow status over a Telegram bot and Firebase'
 author: 'yakuhzi'
 inputs:

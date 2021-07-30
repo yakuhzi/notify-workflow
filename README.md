@@ -1,4 +1,4 @@
-# Notify Status
+# Notify Workflow
 
 A GitHub Action to send workflow status over a Telegram bot and Firebase.
 
@@ -8,7 +8,7 @@ Here is an example how to use this action:
 
 ```yaml  
 - name: Notify workflow status
-  uses: yakuhzi/notify-status@v2
+  uses: yakuhzi/notify-workflow@v2
   if: always()
   with:
     chat_id: ${{ secrets.CHAT_ID }}
@@ -19,7 +19,7 @@ Here is an example how to use this action:
 If you also want to send a Firebase message:
 ```yaml  
 - name: Notify workflow status
-  uses: yakuhzi/notify-status@v2
+  uses: yakuhzi/notify-workflow@v2
   if: always()
   with:
     chat_id: ${{ secrets.CHAT_ID }}
