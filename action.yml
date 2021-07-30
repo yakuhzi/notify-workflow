@@ -1,16 +1,25 @@
-name: 'Workflow Status Telegram'
-description: 'A GitHub Action to send workflow status over a Telegram Bot'
+name: 'Workflow Status'
+description: 'A GitHub Action to send workflow status over a Telegram bot and Firebase'
 author: 'yakuhzi'
 inputs:
   chat_id:
     description: 'Chat to send the status'
     required: true
   bot_token:
-    description: 'Telegram Bot token'
+    description: 'Telegram bot token'
     required: true
   job_status:
     description: 'Job status'
     required: true
+  firebase_server_key:
+    description: 'Firebase server key'
+    required: false
+  firebase_topic:
+    description: 'Topic channel of the Firebase message'
+    required: false
+  app_name:
+    description: 'Name of the released app'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/main.js'
