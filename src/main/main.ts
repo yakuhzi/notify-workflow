@@ -48,7 +48,7 @@ async function run(): Promise<void> {
 
     const appName = process.env.INPUT_APP_NAME
 
-    if (!appName || !tag) {
+    if (process.env.INPUT_JOB_STATUS != 'success' && !appName || !tag) {
       return
     }
 
