@@ -1,5 +1,5 @@
-import * as core from '@actions/core'
 import axios from 'axios'
+import * as core from '@actions/core'
 
 async function run(): Promise<void> {
   try {
@@ -46,6 +46,7 @@ async function run(): Promise<void> {
 
     const checkURL = `https://github.com/${repository}/commit/${commit}/checks`
 
+    console.log(`📧️ Sending Telegram message to chat '${chatId}'`)
     await axios.get(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       params: {
         chat_id: chatId,
@@ -60,6 +61,7 @@ async function run(): Promise<void> {
       return
     }
 
+    console.log(`🔔 Sending Firebase message to topic '${firebaseTopic}'`)
     await axios.post('https://fcm.googleapis.com/fcm/send', {
       to: `/topics/${firebaseTopic}`,
       data: {
@@ -72,8 +74,12 @@ async function run(): Promise<void> {
         'Content-Type': 'application/json',
       }
     })
-  } catch (error: any) {
-    core.setFailed(error)
+  } catch (error) {
+    if (error instanceof Error) {
+      core.setFailed(error.message)
+    } else {
+      core.setFailed(`⚠️ Unexpected error: '${error}'`)
+    }
   }
 }
 
