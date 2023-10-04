@@ -1,6 +1,6 @@
 {
   "name": "notify-workflow",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A GitHub Action to send workflow status over a Telegram bot and Firebase",
   "main": "dist/main.js",
   "scripts": {
@@ -9,11 +9,11 @@
     "start:dev": "ts-node --project tsconfig.json --files -r tsconfig-paths/register -r dotenv/config src/main/main.ts"
   },
   "keywords": [],
-  "author": "Yakuhzi",
+  "author": "yakuhzi",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yakuhzi/notify-status.git"
+    "url": "https://github.com/yakuhzi/notify-workflow.git"
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
