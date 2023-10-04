@@ -1,5 +1,5 @@
-import axios from 'axios'
 import * as core from '@actions/core'
+import axios from 'axios'
 
 async function run(): Promise<void> {
   try {
