@@ -1,5 +1,5 @@
 name: 'Notify Workflow'
-description: 'A GitHub Action to send workflow status over a Telegram bot and Firebase'
+description: 'Send workflow status over a Telegram bot and Firebase'
 author: 'yakuhzi'
 inputs:
   chat_id:
@@ -21,7 +21,7 @@ inputs:
     description: 'Name of the released app'
     required: false
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'dist/main.js'
 branding:
   color: 'blue'
