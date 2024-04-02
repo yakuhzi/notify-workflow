@@ -3,22 +3,7 @@ import axios from 'axios'
 
 async function run(): Promise<void> {
   try {
-    const repository = process.env.GITHUB_REPOSITORY
-    const workflow = process.env.GITHUB_WORKFLOW
-    const runId = process.env.GITHUB_RUN_ID
-    const runNumber = process.env.GITHUB_RUN_NUMBER
-    const commit = process.env.GITHUB_SHA
-    let ref = process.env.GITHUB_REF
-
     const jobStatus = process.env.INPUT_JOB_STATUS
-
-    const botToken = process.env.INPUT_BOT_TOKEN
-    const chatId = process.env.INPUT_CHAT_ID
-
-    const appName = process.env.INPUT_APP_NAME
-    const firebaseServerKey = process.env.INPUT_FIREBASE_SERVER_KEY
-    const firebaseTopic = process.env.INPUT_FIREBASE_TOPIC
-
     let statusMessage = 'Undefined ❎'
 
     switch (jobStatus) {
@@ -33,6 +18,7 @@ async function run(): Promise<void> {
         break
     }
 
+    let ref = process.env.GITHUB_REF
     let tag: string | undefined
 
     if (ref?.startsWith('refs/tags/')) {
@@ -44,6 +30,13 @@ async function run(): Promise<void> {
       ref = ''
     }
 
+    const botToken = process.env.INPUT_BOT_TOKEN
+    const chatId = process.env.INPUT_CHAT_ID
+    const repository = process.env.GITHUB_REPOSITORY
+    const workflow = process.env.GITHUB_WORKFLOW
+    const runId = process.env.GITHUB_RUN_ID
+    const runNumber = process.env.GITHUB_RUN_NUMBER
+    const commit = process.env.GITHUB_SHA
     const checkURL = `https://github.com/${repository}/commit/${commit}/checks`
 
     console.log(`📧️ Sending Telegram message to chat '${chatId}'`)
@@ -55,24 +48,6 @@ async function run(): Promise<void> {
         parse_mode: 'Markdown',
         disable_web_page_preview: true,
       },
-    })
-
-    if (jobStatus !== 'success' || !firebaseServerKey || !firebaseTopic || !appName || !tag) {
-      return
-    }
-
-    console.log(`🔔 Sending Firebase message to topic '${firebaseTopic}'`)
-    await axios.post('https://fcm.googleapis.com/fcm/send', {
-      to: `/topics/${firebaseTopic}`,
-      data: {
-        name: appName,
-        version: tag.replace('v', ''),
-      },
-    }, {
-      headers: {
-        'Authorization': `key=${firebaseServerKey}`,
-        'Content-Type': 'application/json',
-      }
     })
   } catch (error) {
     if (error instanceof Error) {

@@ -1,31 +1,17 @@
 # Notify Workflow
 
-A GitHub Action to send workflow status over a Telegram bot and Firebase.
+A GitHub Action to send the GitHub Action workflow status over a Telegram bot.
 
-Usage
--------
+## Usage
+
 Here is an example how to use this action:
 
 ```yaml  
 - name: Notify workflow status
-  uses: yakuhzi/notify-workflow@v2
+  uses: yakuhzi/notify-workflow@v3
   if: always()
   with:
-    chat_id: ${{ secrets.CHAT_ID }}
-    bot_token: ${{ secrets.BOT_TOKEN }}
-    job_status: ${{ job.status }}
-```
-
-If you also want to send a Firebase message:
-```yaml  
-- name: Notify workflow status
-  uses: yakuhzi/notify-workflow@v2
-  if: always()
-  with:
-    chat_id: ${{ secrets.CHAT_ID }}
-    bot_token: ${{ secrets.BOT_TOKEN }}
-    firebase_server_key: ${{ secrets.FIREBASE_SERVER_KEY }}
-    firebase_topic: ${{ secrets.FIREBASE_TOPIC }}
-    app_name: ${{ secrets.APP_NAME }}
-    job_status: ${{ job.status }}
+    job-status: ${{ job.status }}
+    bot-token: ${{ secrets.BOT_TOKEN }}
+    chat-id: ${{ secrets.CHAT_ID }}
 ```

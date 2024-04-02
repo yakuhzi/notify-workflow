@@ -2,24 +2,15 @@ name: 'Notify Workflow'
 description: 'Send workflow status over a Telegram bot and Firebase'
 author: 'yakuhzi'
 inputs:
-  chat_id:
-    description: 'Chat to send the status'
-    required: true
-  bot_token:
-    description: 'Telegram bot token'
-    required: true
-  job_status:
+  job-status:
     description: 'Job status'
     required: true
-  firebase_server_key:
-    description: 'Firebase server key'
-    required: false
-  firebase_topic:
-    description: 'Topic channel of the Firebase message'
-    required: false
-  app_name:
-    description: 'Name of the released app'
-    required: false
+  bot-token:
+    description: 'Telegram bot token'
+    required: true
+  chat-id:
+    description: 'Chat to send the status'
+    required: true
 runs:
   using: 'node16'
   main: 'dist/main.js'
