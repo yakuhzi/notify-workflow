@@ -3,7 +3,7 @@ import axios from 'axios'
 
 async function run(): Promise<void> {
   try {
-    const jobStatus = process.env.INPUT_JOB_STATUS
+    const jobStatus = core.getInput('job-status') ?? process.env.INPUT_JOB_STATUS
     let statusMessage = 'Undefined ❎'
 
     switch (jobStatus) {
@@ -30,8 +30,8 @@ async function run(): Promise<void> {
       ref = ''
     }
 
-    const botToken = process.env.INPUT_BOT_TOKEN
-    const chatId = process.env.INPUT_CHAT_ID
+    const botToken = core.getInput('bot-token') ?? process.env.INPUT_BOT_TOKEN
+    const chatId = core.getInput('chat-id') ?? process.env.INPUT_CHAT_ID
     const repository = process.env.GITHUB_REPOSITORY
     const workflow = process.env.GITHUB_WORKFLOW
     const runId = process.env.GITHUB_RUN_ID
