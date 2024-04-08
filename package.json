@@ -1,6 +1,6 @@
 {
   "name": "notify-workflow",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A GitHub Action to send workflow status over a Telegram bot and Firebase",
   "main": "dist/main.js",
   "scripts": {
