@@ -1,12 +1,12 @@
 # Notify Workflow
 
-A GitHub Action to send the GitHub Action workflow status over a Telegram bot.
+A GitHub Action to send the GitHub Actions workflow status over a Telegram bot.
 
 ## Usage
 
 Here is an example how to use this action:
 
-```yaml  
+```yaml
 - name: Notify workflow status
   uses: yakuhzi/notify-workflow@v3
   if: always()

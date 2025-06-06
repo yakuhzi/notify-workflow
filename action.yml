@@ -1,6 +1,6 @@
 name: 'Notify Workflow'
-description: 'Send workflow status over a Telegram bot and Firebase'
-author: 'yakuhzi'
+description: 'Send the GitHub Actions workflow status over a Telegram bot'
+author: 'Yakuhzi'
 inputs:
   job-status:
     description: 'Job status'
@@ -13,7 +13,7 @@ inputs:
     required: true
 runs:
   using: 'node20'
-  main: 'dist/main.js'
+  main: 'dist/index.js'
 branding:
   color: 'blue'
   icon: 'send'

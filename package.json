@@ -2,31 +2,38 @@
   "name": "notify-workflow",
   "version": "3.0.1",
   "description": "A GitHub Action to send workflow status over a Telegram bot and Firebase",
-  "main": "dist/main.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node -r dotenv/config .",
-    "start:dev": "ts-node --project tsconfig.json --files -r tsconfig-paths/register -r dotenv/config src/main/main.ts"
-  },
-  "keywords": [],
-  "author": "yakuhzi",
+  "author": "Yakuhzi",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/yakuhzi/notify-workflow.git"
   },
+  "type": "module",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node --env-file=.env ./dist/index.js",
+    "start:dev": "npx @github/local-action . src/main.ts .env",
+    "release": "./release.sh",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
   "dependencies": {
-    "@actions/core": "^1.10.1",
-    "axios": "^1.6.8"
+    "@actions/core": "^1.11.1",
+    "@telegraf/entity": "^0.6.0",
+    "axios": "^1.9.0"
   },
   "devDependencies": {
-    "@types/node": "^20.12.2",
-    "@typescript-eslint/eslint-plugin": "^7.5.0",
-    "@typescript-eslint/parser": "^7.5.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^8.57.0",
-    "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.4.3"
+    "@eslint/js": "^9.28.0",
+    "@types/node": "^22.15.30",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "eslint": "^9.28.0",
+    "global": "^4.4.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
